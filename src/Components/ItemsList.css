@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+
+.itemsList{
+    @apply w-[40%] bg-white  ml-[10%] font-arvo
+}
+/* -----------------Categories------------------- */
+.categories{
+    @apply bg-white w-[40%]  ml-[10%] 
+}
+.all-categories{
+    @apply justify-center grid grid-cols-4 px-5 w-[90%] ml-[9%] mb-[0.5%]
+}
+.all-categories li{
+    @apply border border-black rounded-lg w-[60%] flex justify-center my-[4%]
+}
+/* --------------------ItemsList--------------------- */
+.meals-list{
+    @apply grid
+}
+.meals-list li{
+    @apply my-[5%] border-b-2
+}
+.meal-img{
+    @apply rounded-md h-[60%] w-[180%] mt-[3%] ml-[5%]
+}
+.drink-img{
+    @apply flex
+}
+.drink-img img{
+    @apply w-[20%] rounded-md mr-[2%] mb-[5%] cursor-pointer
+}
+.price-and-button button{
+    @apply border-black border-2 w-[80%] rounded-md
+}
+.clicked-border{
+    @apply border-blue-500 border-2
+}
