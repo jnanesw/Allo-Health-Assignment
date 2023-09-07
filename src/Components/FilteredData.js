@@ -6,92 +6,84 @@ import { useState } from 'react';
 
 const JsonData = require('../JsonData/Jsondata.json')
 
-const FilteredData = ({CategoryName})=>{
+const FilteredData = ({CategoryName,setTotalPrice})=>{
     const [clickedElement, SetClickedElement] = useState("");
     const [titleName, SetTitleName] = useState("");
 
-    const ClickableElement = (elementId, TitleName)=>{
+    const ClickableElement = (elementId, TitleName, tot_price)=>{
+        setTotalPrice(tot_price)
+        console.log("Price from filteredData: ", tot_price)
         SetTitleName(TitleName)
         SetClickedElement(elementId)
     }
     return(
-        <div className='itemsList rounded-md'>
+        <div>
+            {JsonData.meals.map((item, index)=>{
 
-            <ul className='meals-list'>
-
-                {JsonData.meals.map((item, index)=>{
-
+                if(item.labels[0] === CategoryName || item.labels[1] === CategoryName) {
                     return (
-                        <li key={index}>
+                    <li key={index}>
+                        <div>
                         <div className='flex'>
-                            {console.log("Checking: ", item.labels[0], ", ",CategoryName )}
-                            {(item.labels[0] === CategoryName || item.labels[1] === CategoryName)?(
                             <div>
-                                <div>
-                                    <img src={item.img} alt='meals' className='meal-img' />
+                            <img src={item.img} alt='meals' className='meal-img' />
+                            </div>
+
+                            <div className='ml-[5%]'>
+                            <div>
+                                <p>{item.title}</p>
+                                <p>Starter: {item.starter}</p>
+                                <p>Desert: {item.desert}</p>
+                            </div>
+
+                            <br />
+
+                            <p>Select Your Drink: <mark>{item.id === clickedElement.slice(0, 5) ? titleName : ""}</mark></p>
+
+                            <div>
+                                <div className='drink-img'>
+                                {
+                                item.drinks.map((i, index2) => {
+                                    let drinkImageSrc = null;
+                                    let tot_index = item.id + i.title;
+                                    switch (i.title) {
+                                    case 'Vine':
+                                        drinkImageSrc = vineImage;
+                                        break;
+                                    case 'Juice':
+                                        drinkImageSrc = juiceImage;
+                                        break;
+                                    case 'Beer':
+                                        drinkImageSrc = beerImage;
+                                        break;
+                                    default:
+                                        break;
+                                    }
+                                    let total_price = item.price+i.price;
+                                    return (
+                                    <img
+                                        src={drinkImageSrc}
+                                        alt='drinks'
+                                        key={tot_index}
+                                        className={tot_index === clickedElement ? 'clicked-border' : ''}
+                                        onClick={() => { ClickableElement(tot_index, i.title, total_price) }}
+                                    />
+                                    );
+                                })}
+
+                                <div className='price-and-button'>
+                                    <p>Price: {item.price}</p>
+                                    <button>Select</button>
                                 </div>
-
-                                <div className='ml-[5%]'>
-                                
-                                    <div>
-                                        
-                                        <p>{item.title}</p>
-                                        <p>Starter: {item.starter}</p>
-                                        <p>Desert: {item.desert}</p>
-
-                                    </div>
-
-                                    <br />
-                        
-                                    <p>Select Your Drink: <mark>{item.id === clickedElement.slice(0,5) ? titleName: ""}</mark></p>
-                                    <div>
-
-                                        <div className='drink-img'>
-                                            
-                                            {item.drinks.map((i, index2)=>{
-                                                let drinkImageSrc = null;
-                                                let tot_index = item.id + i.title;
-                                                switch (i.title) {
-                                                case 'Vine':
-                                                    drinkImageSrc = vineImage;
-                                                    break;
-                                                case 'Juice':
-                                                    drinkImageSrc = juiceImage;
-                                                    break;
-                                                case 'Beer':
-                                                    drinkImageSrc = beerImage;
-                                                    break;
-                                                default:
-                                                    break;
-                                                }
-                                                return (
-                                                    <img
-                                                    src={drinkImageSrc}
-                                                    alt='drinks'
-                                                    key={tot_index}
-                                                    className={tot_index === clickedElement ? 'clicked-border':''}
-                                                    onClick={()=>{ClickableElement(tot_index, i.title)}}
-                                                    />
-                                                );
-                                            })}
-
-                                            <div className='price-and-button'>
-                                                <p>Price: {item.price}</p>
-                                                <button>Select</button>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
                                 </div>
-                            </div>):(null)}
-                        
+                            </div>
+                            </div>
                         </div>
-
+                        </div>
                     </li>
-                    )
-                })}
-            </ul>
+                    );
+                }
+            })}
         </div>
     )
 }

@@ -6,15 +6,16 @@ import { useState } from 'react';
 
 const JsonData = require('../JsonData/Jsondata.json');
 
-const ItemsList = ()=>{
+const ItemsList = ({setTotalPrice})=>{
     const [clickedElement, SetClickedElement] = useState("");
     const [titleName, SetTitleName] = useState("");
-    // const [ElementID, SetElementID] = useState("");
 
-    const ClickableElement = (elementId, TitleName)=>{
+    const ClickableElement = (elementId, TitleName, total_price)=>{
+        setTotalPrice(total_price)
         SetTitleName(TitleName)
         SetClickedElement(elementId)
     }
+
     return(
         <div className='itemsList rounded-md'>
 
@@ -63,13 +64,14 @@ const ItemsList = ()=>{
                                             default:
                                                 break;
                                             }
+                                            let total_price = item.price+i.price;
                                             return (
                                                 <img
                                                 src={drinkImageSrc}
                                                 alt='drinks'
                                                 key={tot_index}
                                                 className={tot_index === clickedElement ? 'clicked-border':''}
-                                                onClick={()=>{ClickableElement(tot_index, i.title)}}
+                                                onClick={()=>{ClickableElement(tot_index, i.title,total_price)}}
                                                 />
                                             );
                                         })}

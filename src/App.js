@@ -1,12 +1,14 @@
 import Categories from './Components/Categories';
-import ItemsList from './Components/ItemsList';
+import SideLayout from './Components/SideLayout';
 import './App.css';
+import { useState } from 'react';
 function App() {
+  const [TotalPrice, SetTotalPrice] = useState(0);
   return (
-    <div className='bg-gray-400 max-h-full bg-cover'>
-      <div>
-        <Categories />
-        {/* <ItemsList /> */}
+    <div className='bg-gray-400 h-screen overflow-y-auto bg-cover'>
+      <div className='flex'>
+        <Categories setTotalPrice={SetTotalPrice} />
+        <SideLayout total_price={TotalPrice.toFixed(2)} />
       </div>
     </div>
   );
