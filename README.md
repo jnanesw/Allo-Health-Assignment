@@ -1,5 +1,5 @@
 # To run this project follow the below steps
-    *At first install TailwindCSS
+    -At first install TailwindCSS
         *`npm install -D tailwindcss postcss autoprefixer`
         *`npx tailwindcss init`
 
