@@ -1,0 +1,98 @@
+import vineImage from '../assets/vine.jpg'; 
+import juiceImage from '../assets/juice.jpg';
+import beerImage from '../assets/beer.jpg';
+import "./ItemsList.css"
+import { useState } from 'react';
+
+const JsonData = require('../JsonData/Jsondata.json')
+
+const FilteredData = ({CategoryName})=>{
+    const [clickedElement, SetClickedElement] = useState("");
+    const [titleName, SetTitleName] = useState("");
+
+    const ClickableElement = (elementId, TitleName)=>{
+        SetTitleName(TitleName)
+        SetClickedElement(elementId)
+    }
+    return(
+        <div className='itemsList rounded-md'>
+
+            <ul className='meals-list'>
+
+                {JsonData.meals.map((item, index)=>{
+
+                    return (
+                        <li key={index}>
+                        <div className='flex'>
+                            {console.log("Checking: ", item.labels[0], ", ",CategoryName )}
+                            {(item.labels[0] === CategoryName || item.labels[1] === CategoryName)?(
+                            <div>
+                                <div>
+                                    <img src={item.img} alt='meals' className='meal-img' />
+                                </div>
+
+                                <div className='ml-[5%]'>
+                                
+                                    <div>
+                                        
+                                        <p>{item.title}</p>
+                                        <p>Starter: {item.starter}</p>
+                                        <p>Desert: {item.desert}</p>
+
+                                    </div>
+
+                                    <br />
+                        
+                                    <p>Select Your Drink: <mark>{item.id === clickedElement.slice(0,5) ? titleName: ""}</mark></p>
+                                    <div>
+
+                                        <div className='drink-img'>
+                                            
+                                            {item.drinks.map((i, index2)=>{
+                                                let drinkImageSrc = null;
+                                                let tot_index = item.id + i.title;
+                                                switch (i.title) {
+                                                case 'Vine':
+                                                    drinkImageSrc = vineImage;
+                                                    break;
+                                                case 'Juice':
+                                                    drinkImageSrc = juiceImage;
+                                                    break;
+                                                case 'Beer':
+                                                    drinkImageSrc = beerImage;
+                                                    break;
+                                                default:
+                                                    break;
+                                                }
+                                                return (
+                                                    <img
+                                                    src={drinkImageSrc}
+                                                    alt='drinks'
+                                                    key={tot_index}
+                                                    className={tot_index === clickedElement ? 'clicked-border':''}
+                                                    onClick={()=>{ClickableElement(tot_index, i.title)}}
+                                                    />
+                                                );
+                                            })}
+
+                                            <div className='price-and-button'>
+                                                <p>Price: {item.price}</p>
+                                                <button>Select</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>):(null)}
+                        
+                        </div>
+
+                    </li>
+                    )
+                })}
+            </ul>
+        </div>
+    )
+}
+export default FilteredData;

@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
 
 .itemsList{
-    @apply w-[40%] bg-white  ml-[10%] font-arvo
+    @apply  bg-white  ml-[10%] font-arvo
 }
 /* -----------------Categories------------------- */
 .categories{
@@ -15,7 +15,7 @@
     @apply justify-center grid grid-cols-4 px-5 w-[90%] ml-[9%] mb-[0.5%]
 }
 .all-categories li{
-    @apply border border-black rounded-lg w-[60%] flex justify-center my-[4%]
+    @apply border border-black rounded-lg w-[60%] flex justify-center my-[4%] cursor-pointer
 }
 /* --------------------ItemsList--------------------- */
 .meals-list{
@@ -37,5 +37,5 @@
     @apply border-black border-2 w-[80%] rounded-md
 }
 .clicked-border{
-    @apply border-blue-500 border-2
+    @apply border-blue-400 border-2
 }

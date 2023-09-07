@@ -6,7 +6,7 @@ function App() {
     <div className='bg-gray-400 max-h-full bg-cover'>
       <div>
         <Categories />
-        <ItemsList />
+        {/* <ItemsList /> */}
       </div>
     </div>
   );

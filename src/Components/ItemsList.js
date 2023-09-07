@@ -8,9 +8,11 @@ const JsonData = require('../JsonData/Jsondata.json');
 
 const ItemsList = ()=>{
     const [clickedElement, SetClickedElement] = useState("");
-    const [titleName, SetTitleName] = useState("")
-    const ClickableElement = (elementId, titleName)=>{
-        SetTitleName()
+    const [titleName, SetTitleName] = useState("");
+    // const [ElementID, SetElementID] = useState("");
+
+    const ClickableElement = (elementId, TitleName)=>{
+        SetTitleName(TitleName)
         SetClickedElement(elementId)
     }
     return(
@@ -19,7 +21,7 @@ const ItemsList = ()=>{
             <ul className='meals-list'>
 
                 {JsonData.meals.map((item, index)=>{
-                    console.log(item.id)
+
                     return (
                         <li key={index}>
                         <div className='flex'>
@@ -39,7 +41,8 @@ const ItemsList = ()=>{
                                 </div>
 
                                 <br />
-                                <p>Select Your Drink: {}</p>
+                       
+                                <p>Select Your Drink: <mark>{item.id === clickedElement.slice(0,5) ? titleName: ""}</mark></p>
                                 <div>
 
                                     <div className='drink-img'>
