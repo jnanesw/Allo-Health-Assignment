@@ -5,37 +5,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
 
 .itemsList{
-    @apply  bg-white  ml-[10%] font-arvo
+    @apply  bg-white ml-[2%]  lg:ml-[10%] font-arvo
 }
 /* -----------------Categories------------------- */
 .categories{
-    @apply bg-white w-[40%]  ml-[10%] 
+    @apply bg-white w-[60%] mx-[2%] lg:w-[90%]  lg:ml-[10%] mt-[1%] 
 }
 .all-categories{
-    @apply justify-center grid grid-cols-4 px-5 w-[90%] ml-[9%] mb-[0.5%]
+    @apply justify-center grid grid-cols-2 lg:grid-cols-4 px-5 lg:w-[90%] lg:ml-[9%] lg:mb-[0.5%]
 }
 .all-categories li{
-    @apply border border-black rounded-lg w-[60%] flex justify-center my-[4%] cursor-pointer
+    @apply border border-black rounded-lg w-[80%] ml-[10%] mt-[2%] lg:w-[60%] flex justify-center lg:my-[4%] cursor-pointer
 }
 /* --------------------ItemsList--------------------- */
 .meals-list{
-    @apply grid
+    @apply grid text-sm md:text-lg
 }
 .meals-list li{
-    @apply my-[5%] border-b-2
+    @apply my-[2%] lg:my-[5%] border-b-2
 }
 .meal-img{
-    @apply rounded-md h-[60%] w-[180%] mt-[3%] ml-[2%]
+    @apply rounded-md w-[90%] lg:h-[60%] lg:w-[180%] lg:mt-[3%] lg:ml-[2%]
 }
 .drink-img{
     @apply flex
 }
 .drink-img img{
-    @apply w-[20%] rounded-md mr-[2%] mb-[5%] cursor-pointer
+    @apply w-[20%] h-[80%] m-[1%] lg:w-[20%] rounded-md lg:mr-[2%] lg:mb-[5%] cursor-pointer
 }
 .price-and-button button{
-    @apply border-black border-2 w-[80%] rounded-md
+    @apply border-black border-2 lg:w-[80%] rounded-md
 }
 .clicked-border{
     @apply border-blue-400 border-2
+}
+/* ---------------------SideLayout------------------------ */
+
+.side-layout{
+    @apply lg:ml-[6%] lg:w-[60%] lg:mt-[8%] font-arvo 
+}
+.passanger-details{
+    @apply border border-black w-[90%] text-base 
+    md:w-[120%] md:text-lg
+    lg:py-4 lg:w-[80%] bg-gray-200
+}
+.flight-details{
+    @apply lg:py-4 lg:text-lg
+}
+.passangers{
+    @apply flex justify-center border-2 py-2 border-black lg:h-10
+}
+.price{
+    @apply lg:mt-[5%] lg:text-xl
 }

@@ -44,7 +44,7 @@ const ItemsList = ({setTotalPrice})=>{
                                 <br />
                        
                                 <p>Select Your Drink: <mark>{item.id === clickedElement.slice(0,5) ? titleName: ""}</mark></p>
-                                <div>
+                                <div className='sm:flex'>
 
                                     <div className='drink-img'>
                                         

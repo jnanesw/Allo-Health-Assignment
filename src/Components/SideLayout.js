@@ -2,27 +2,22 @@
 
 const SideLayout = ({ total_price }) => {
     return (
-      <div>
+      <div className="side-layout">
 
-        <h2>+ Select meal</h2>
-
-        <div>
-          <div>
-
+        <h1 className="md:text-xl lg:text-2xl">+ Select meal</h1>
+        <div className="passanger-details">
+          <div className="flight-details">
             <h3>Riga - st.peterberg</h3>
             <p>Flight Duration: 5h 40min</p>
-
           </div>
-
-          <p>Adult Passenger 1</p>
-          <p>Adult Passenger 2</p>
-
+          <p className="passangers">Adult Passenger 1</p>
+          <p className="passangers">Adult Passenger 2</p>
         </div>
 
-        <div>
+        <div className="price">
           <p>Total Cost: {total_price}</p>
         </div>
-        
+
       </div>
     );
   }
