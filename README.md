@@ -9,3 +9,6 @@ At first install TailwindCSS
 
 ## finally run below command in the command line
 # `npm start`
+
+# Link to access the website (Hosted Link) 
+ `https://allo-health-assignment.netlify.app/`
